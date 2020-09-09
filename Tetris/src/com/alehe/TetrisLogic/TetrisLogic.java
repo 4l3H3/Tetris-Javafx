@@ -8,7 +8,7 @@ import com.alehe.TetrisPieces.PieceType;
 import com.alehe.TetrisPieces.LPiece;
 import com.alehe.TetrisPieces.LRPiece;
 import com.alehe.TetrisPieces.LongPiece;
-import com.alehe.TetrisPieces.Shape;
+import com.alehe.TetrisPieces.TetrisPiece;
 import com.alehe.TetrisPieces.SquarePiece;
 import com.alehe.TetrisPieces.StairPiece;
 import com.alehe.TetrisPieces.StairRPiece;
@@ -21,13 +21,13 @@ public class TetrisLogic {
 	
 	private static List<TetrisBlock> cleared_blocks;
 
-	public static void addShapeToArray(Shape shape, TetrisBlock[][] array, int scaledown) {
+	public static void addShapeToArray(TetrisPiece shape, TetrisBlock[][] array, int scaledown) {
 		for (TetrisBlock block : shape.getBody()) {
 			array[(int) block.getLayoutX() / scaledown][((int) block.getLayoutY()) / scaledown] = block;
 		}
 	}
 
-	public static void movePieceInArray(Shape shape, TetrisBlock[][] array, int downscale, Action action) {
+	public static void movePieceInArray(TetrisPiece shape, TetrisBlock[][] array, int downscale, Action action) {
 		removeFromArray(shape, array, downscale);
 		switch (action) {
 		case MOVELEFT:
@@ -59,13 +59,13 @@ public class TetrisLogic {
 		}
 	}
 
-	public static void removeFromArray(Shape shape, TetrisBlock[][] array, int downscale) {
+	public static void removeFromArray(TetrisPiece shape, TetrisBlock[][] array, int downscale) {
 		for (TetrisBlock block : shape.getBody()) {
 			array[(int) block.getLayoutX() / downscale][((int) block.getLayoutY() / downscale)] = null;
 		}
 	}
 
-	public static boolean collidesWithAnotherPieceLeft(Shape shape, TetrisBlock[][] array, int downscale) {
+	public static boolean collidesWithAnotherPieceLeft(TetrisPiece shape, TetrisBlock[][] array, int downscale) {
 		for (TetrisBlock block : shape.getBody()) {
 			if ((int) block.getLayoutX() / downscale - 1 > -0.1)
 				if (array[(int) block.getLayoutX() / downscale - 1][((int) block.getLayoutY() / downscale)] != null
@@ -77,7 +77,7 @@ public class TetrisLogic {
 		return false;
 	}
 
-	public static boolean collidesWithAnotherPieceRight(Shape shape, TetrisBlock[][] array, int downscale) {
+	public static boolean collidesWithAnotherPieceRight(TetrisPiece shape, TetrisBlock[][] array, int downscale) {
 		for (TetrisBlock block : shape.getBody()) {
 			if ((int) block.getLayoutX() / downscale + 1 < array.length)
 				if (array[(int) block.getLayoutX() / downscale + 1][((int) block.getLayoutY() / downscale)] != null
@@ -89,7 +89,7 @@ public class TetrisLogic {
 		return false;
 	}
 
-	public static boolean collidesWithAnotherPieceDown(Shape shape, TetrisBlock[][] array, int downscale) {
+	public static boolean collidesWithAnotherPieceDown(TetrisPiece shape, TetrisBlock[][] array, int downscale) {
 		for (TetrisBlock block : shape.getBody()) {
 			if ((int) block.getLayoutY() / downscale + 1 < array[0].length)
 				if (array[(int) block.getLayoutX() / downscale][(((int) block.getLayoutY() / downscale) + 1)] != null
@@ -100,7 +100,7 @@ public class TetrisLogic {
 		return false;
 	}
 
-	public static boolean isRotationValidLeft(Shape shape, TetrisBlock[][] array, int downscale) {
+	public static boolean isRotationValidLeft(TetrisPiece shape, TetrisBlock[][] array, int downscale) {
 		List<Integer> new_coords = shape.getNextRotationPointsRight();
 		for (int i = 0; i < new_coords.size(); i += 2) {
 			if (array[new_coords.get(i) / downscale][new_coords.get(i + 1) / downscale] != null
@@ -111,7 +111,7 @@ public class TetrisLogic {
 		return true;
 	}
 
-	public static boolean isRotationValidRight(Shape shape, TetrisBlock[][] array, int downscale) {
+	public static boolean isRotationValidRight(TetrisPiece shape, TetrisBlock[][] array, int downscale) {
 		List<Integer> new_coords = shape.getNextRotationPointsLeft();
 		for (int i = 0; i < new_coords.size(); i += 2) {
 			if (array[new_coords.get(i) / downscale][new_coords.get(i + 1) / downscale] != null
@@ -122,7 +122,7 @@ public class TetrisLogic {
 		return true;
 	}
 
-	public static boolean isInsideOfBoundsRight(Shape shape, TetrisBlock[][] array, int downscale) {
+	public static boolean isInsideOfBoundsRight(TetrisPiece shape, TetrisBlock[][] array, int downscale) {
 		for (TetrisBlock block : shape.getBody()) {
 			if (block.getLayoutX() / downscale + 1 >= array.length)
 				return false;
@@ -130,7 +130,7 @@ public class TetrisLogic {
 		return true;
 	}
 
-	public static boolean isInsideOfBoundsLeft(Shape shape, TetrisBlock[][] array, int downscale) {
+	public static boolean isInsideOfBoundsLeft(TetrisPiece shape, TetrisBlock[][] array, int downscale) {
 		for (TetrisBlock block : shape.getBody()) {
 			if (block.getLayoutX() / downscale - 1 <= -0.1)
 				return false;
@@ -138,7 +138,7 @@ public class TetrisLogic {
 		return true;
 	}
 
-	public static boolean isInsideOfBoundsDown(Shape shape, TetrisBlock[][] array, int downscale) {
+	public static boolean isInsideOfBoundsDown(TetrisPiece shape, TetrisBlock[][] array, int downscale) {
 		boolean is_inside = true;
 		for (TetrisBlock block : shape.getBody()) {
 			if (((int) block.getLayoutY() / downscale + 1) >= array[0].length)
@@ -155,9 +155,9 @@ public class TetrisLogic {
 		return false;
 	}
 	
-	public static Shape getNewShape(int x, int y, int size) {
+	public static TetrisPiece getNewShape(int x, int y, int size) {
 		PieceType form = PieceType.values()[random.nextInt(7)];
-		Shape new_shape = null;
+		TetrisPiece new_shape = null;
 		switch (form) {
 		case LONGPIECE:
 			new_shape = new LongPiece(x, y, size);
@@ -186,7 +186,7 @@ public class TetrisLogic {
 		return new_shape;
 	}
 	
-	public static void clearEmptyRows(Shape shape, TetrisBlock[][] array, int downscale) {
+	public static void clearEmptyRows(TetrisPiece shape, TetrisBlock[][] array, int downscale) {
 		cleared_blocks = new ArrayList<TetrisBlock>();
 		for (int j = 0; j < array[0].length; j++) {
 			boolean is_full = true;

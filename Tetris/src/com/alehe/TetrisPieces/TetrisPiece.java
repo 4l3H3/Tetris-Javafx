@@ -1,14 +1,14 @@
 package com.alehe.TetrisPieces;
 import java.util.List;
 
-public abstract class Shape {
+public abstract class TetrisPiece {
 
 	protected TetrisBlock[] body;
 	protected final int spacing;
 	protected int rotationpoint_x;
 	protected int rotationpoint_y;
 	
-	public Shape(int size) {	
+	public TetrisPiece(int size) {	
 		spacing = size;
 	}
 	

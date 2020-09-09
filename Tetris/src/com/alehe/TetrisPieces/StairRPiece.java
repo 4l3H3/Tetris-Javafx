@@ -4,7 +4,7 @@ import java.util.List;
 
 import javafx.scene.paint.Color;
 
-public class StairRPiece extends Shape {
+public class StairRPiece extends TetrisPiece {
 
 	public StairRPiece(int x, int y, int size) {
 		super(size);

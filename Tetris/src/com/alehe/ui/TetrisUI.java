@@ -6,7 +6,7 @@ import com.alehe.Board.Board;
 import com.alehe.Board.BoardType;
 import com.alehe.TetrisLogic.Action;
 import com.alehe.TetrisLogic.TetrisLogic;
-import com.alehe.TetrisPieces.Shape;
+import com.alehe.TetrisPieces.TetrisPiece;
 import com.alehe.TetrisPieces.TetrisBlock;
 
 import javafx.animation.AnimationTimer;
@@ -36,7 +36,7 @@ public class TetrisUI extends Application {
 
 	Random random = new Random();
 
-	private Shape current_tetris_piece = null;
+	private TetrisPiece current_tetris_piece = null;
 	private Board board = new Board(MAX_X, MAX_Y, SIZE, BoardType.Raster);
 	private Rectangle hold = new Rectangle(SIZE * 4, SIZE * 4, Color.WHITE);
 	private Rectangle next = new Rectangle(SIZE * 4, SIZE * 4, Color.WHITE);

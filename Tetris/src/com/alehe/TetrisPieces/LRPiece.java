@@ -4,7 +4,7 @@ import java.util.List;
 
 import javafx.scene.paint.Color;
 
-public class LRPiece extends Shape {
+public class LRPiece extends TetrisPiece {
 
 	public LRPiece(int x, int y, int size) {
 		super(size);

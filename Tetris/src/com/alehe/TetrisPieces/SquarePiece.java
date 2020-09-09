@@ -3,7 +3,7 @@ import java.util.List;
 
 import javafx.scene.paint.Color;
 
-public class SquarePiece extends Shape{
+public class SquarePiece extends TetrisPiece{
 
 	public SquarePiece(int x, int y, int size) {
 		super(size);

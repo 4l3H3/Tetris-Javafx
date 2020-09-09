@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.alehe.TetrisPieces.Form;
+import com.alehe.TetrisPieces.PieceType;
 import com.alehe.TetrisPieces.LPiece;
 import com.alehe.TetrisPieces.LRPiece;
 import com.alehe.TetrisPieces.LongPiece;
@@ -156,7 +156,7 @@ public class TetrisLogic {
 	}
 	
 	public static Shape getNewShape(int x, int y, int size) {
-		Form form = Form.values()[random.nextInt(7)];
+		PieceType form = PieceType.values()[random.nextInt(7)];
 		Shape new_shape = null;
 		switch (form) {
 		case LONGPIECE:

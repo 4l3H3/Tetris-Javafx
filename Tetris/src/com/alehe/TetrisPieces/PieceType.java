@@ -1,6 +1,6 @@
 package com.alehe.TetrisPieces;
 
-public enum Form {
+public enum PieceType {
 	LONGPIECE(),
 	LPIECE(),
 	LPIECEREVERSE(),

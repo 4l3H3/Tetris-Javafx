@@ -51,9 +51,9 @@ public class TetrisUI extends Application {
 		next.setLayoutY(MAX_Y / 2 - SIZE / 8);
 		board.getChildren().add(next);
 		
-		current_tetris_piece = TetrisLogic.getNewShape(BLOCKSPAWNPOINT_X, BLOCKSPAWNPOINT_Y, SIZE);
+		current_tetris_piece = TetrisLogic.getNewTetrisPiece(BLOCKSPAWNPOINT_X, BLOCKSPAWNPOINT_Y, SIZE);
 		board.getChildren().addAll(current_tetris_piece.getBody());
-		TetrisLogic.addShapeToArray(current_tetris_piece, arrayboard, SIZE);
+		TetrisLogic.addPieceToArray(current_tetris_piece, arrayboard, SIZE);
 		AnimationTimer timer = new AnimationTimer() {
 
 			public void handle(long arg0) {
@@ -101,8 +101,8 @@ public class TetrisUI extends Application {
 			TetrisLogic.clearEmptyRows(current_tetris_piece, arrayboard, SIZE);
 			if (TetrisLogic.getClearedObjects() != null)
 				board.getChildren().removeAll(TetrisLogic.getClearedObjects());
-			current_tetris_piece = TetrisLogic.getNewShape(BLOCKSPAWNPOINT_X, BLOCKSPAWNPOINT_Y, SIZE);
-			TetrisLogic.addShapeToArray(current_tetris_piece, arrayboard, SIZE);
+			current_tetris_piece = TetrisLogic.getNewTetrisPiece(BLOCKSPAWNPOINT_X, BLOCKSPAWNPOINT_Y, SIZE);
+			TetrisLogic.addPieceToArray(current_tetris_piece, arrayboard, SIZE);
 			board.getChildren().addAll(current_tetris_piece.getBody());
 		}
 		try {

@@ -2,17 +2,17 @@ package com.alehe.TetrisPieces;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.paint.Color;
+import javafx.scene.image.Image;
 
 public class LRPiece extends TetrisPiece {
 
-	public LRPiece(int x, int y, int size) {
+	public LRPiece(int x, int y, int size, Image image) {
 		super(size);
 		this.body = new TetrisBlock[] {
-			new TetrisBlock(size, x, y, Color.BLUE),
-			new TetrisBlock(size, x + spacing, y, Color.BLUE),
-			new TetrisBlock(size, x + spacing * 2, y, Color.BLUE),
-			new TetrisBlock(size, x + spacing * 2, y + spacing, Color.BLUE),
+			new TetrisBlock(size, x, y, image),
+			new TetrisBlock(size, x + spacing, y, image),
+			new TetrisBlock(size, x + spacing * 2, y, image),
+			new TetrisBlock(size, x + spacing * 2, y + spacing, image),
 		}; 
 		super.rotationpoint_x = (int)this.body[1].getLayoutX();
 		super.rotationpoint_y = (int)this.body[1].getLayoutY();

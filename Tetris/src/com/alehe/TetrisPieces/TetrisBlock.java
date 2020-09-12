@@ -1,13 +1,15 @@
 package com.alehe.TetrisPieces;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-public class TetrisBlock extends Rectangle {
+public class TetrisBlock extends ImageView {
 
 	private final int spacing;
 	
-	public TetrisBlock(int size, int x, int y, Color color) {
-		super(size - 1, size - 1, color);
+	public TetrisBlock(int size, int x, int y, Image image) {
+		super.setImage(image);
+		super.setFitHeight(size);
+		super.setFitWidth(size);
 		spacing = size;
 		setLayoutX(x);
 		setLayoutY(y);

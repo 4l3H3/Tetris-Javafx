@@ -9,6 +9,9 @@ import com.alehe.TetrisPieces.LPiece;
 import com.alehe.TetrisPieces.LRPiece;
 import com.alehe.TetrisPieces.LongPiece;
 import com.alehe.TetrisPieces.TetrisPiece;
+
+import javafx.scene.image.Image;
+
 import com.alehe.TetrisPieces.SquarePiece;
 import com.alehe.TetrisPieces.StairPiece;
 import com.alehe.TetrisPieces.StairRPiece;
@@ -159,19 +162,19 @@ public class TetrisLogic {
 		PieceType form = PieceType.values()[random.nextInt(7)];
 		switch (form) {
 		case LONGPIECE:
-			return new LongPiece(x, y, size);
+			return new LongPiece(x, y, size, new Image("long.png"));
 		case LPIECE:
-			return new LPiece(x, y, size);
+			return new LPiece(x, y, size, new Image("l.png"));
 		case LPIECEREVERSE:
-			return new LRPiece(x, y, size);
+			return new LRPiece(x, y, size, new Image("lr.png"));
 		case SQUAREPIECE:
-			return new SquarePiece(x, y, size);
+			return new SquarePiece(x, y, size, new Image("square.png"));
 		case STAIRPIECE:
-			return new StairPiece(x, y, size);
+			return new StairPiece(x, y, size, new Image("stair.png"));
 		case STAIRPIECEREVERSE:
-			return new StairRPiece(x, y, size);
+			return new StairRPiece(x, y, size, new Image("stairr.png"));
 		case TPIECE:
-			return new TPiece(x, y, size);
+			return new TPiece(x, y, size, new Image("t.png"));
 		default:
 			return null;
 		}

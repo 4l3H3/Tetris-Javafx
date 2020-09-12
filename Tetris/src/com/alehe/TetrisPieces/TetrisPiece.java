@@ -1,7 +1,9 @@
 package com.alehe.TetrisPieces;
 import java.util.List;
 
-public abstract class TetrisPiece {
+import javafx.scene.image.ImageView;
+
+public abstract class TetrisPiece extends ImageView {
 
 	protected TetrisBlock[] body;
 	protected final int spacing;
